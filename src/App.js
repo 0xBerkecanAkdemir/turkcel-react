@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Routes,
+  BrowserRouter,
+} from "react-router-dom";
+import Home from "./pages/Dashboard/Home";
+import Users from "./pages/Dashboard/Users";
+import Contact from "./pages/Dashboard/Contact";
+import Menu from "./components/Menu"
+import UserDetails from "./pages/Dashboard/UserDetails";
+import Login from "./pages/Auth/Login";
+import DashboardLayouts from "./layouts/Dashboard/index";
+import AuthLayout from "./layouts/Auth/index";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<DashboardLayouts />}>
+                <Route index element={<Home />} />
+                <Route path="users" element={<Users />} />
+                <Route path="users/:id" element={<UserDetails />} />
+                <Route path="contact" element={<Contact />} />
+        </Route> 
+        <Route path="auth" element={<AuthLayout />}>
+                <Route index="login" element={<Login />} />
+        </Route>
+        
+      </Routes>
+    </BrowserRouter>
   );
 }
 
