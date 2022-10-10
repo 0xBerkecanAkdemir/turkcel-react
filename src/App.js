@@ -14,6 +14,7 @@ import UserDetails from "./pages/Dashboard/UserDetails";
 import Login from "./pages/Auth/Login";
 import DashboardLayouts from "./layouts/Dashboard/index";
 import AuthLayout from "./layouts/Auth/index";
+import Register from "./pages/Auth/Register";
 function App() {
   return (
     <BrowserRouter>
@@ -26,6 +27,7 @@ function App() {
         </Route> 
         <Route path="auth" element={<AuthLayout />}>
                 <Route index="login" element={<Login />} />
+                <Route path="register" element={<Register />} />
         </Route>
         
       </Routes>
